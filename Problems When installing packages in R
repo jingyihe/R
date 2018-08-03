@@ -1,0 +1,13 @@
+############ Problems when installing packages in R
+
+1.  Package : RODBC
+  problem : Warning in install.packages :  installation of package ‘RODBC’ had non-zero exit status
+  Solving steps:  1. /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+                  2. brew update && brew install unixODBC
+                  
+                  
+2. Java / rJAVA
+  problem: //sudo R CMD javareconf// and  //R CMD javareconf// gave different results
+  Soving : install.packages('rJava', repos = 'http://rforge.net')
+
+  
