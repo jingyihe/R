@@ -1,0 +1,50 @@
+
+1. Connecting to SQL using package: odbc
+2. Connecting to SQL using package: RJDBC
+3. Problems when installing packages in R
+
+############1. Connecting to SQL using package: odbc
+####### easy to install the pacakage
+library(odbc)
+jdbcDriver=RJDBC::JDBC(driverClass = "oracle.jdbc.OracleDriver",classPath="../ojdbc6.jar",identifier.quote="'")
+jdbcConnection =dbConnect(jdbcDriver,database, host,port, user, passward)
+query = "select * from datatable"
+result <- dbSendQuery(con, query)
+dbFetch(result, n = 100)
+
+
+############ 2. Connecting to SQL using package: RJDBC
+####### have to install JAVA first
+options(java.parameters =  "-Xmx8000m")
+library(rJava)
+library(RJDBC)
+
+jdbcDriver=RJDBC::JDBC(driverClass = "oracle.jdbc.OracleDriver",classPath="../ojdbc6.jar",identifier.quote="'")
+jdbcConnection =dbConnect(jdbcDriver,database, host,port, user, passward)
+query = "select * from datatable"
+result = dbGetQuery(jdbcConnection,query)
+write.csv(result, file = "test.csv",row.names=FALSE)
+
+
+
+
+
+
+
+
+
+
+
+############ 3. Problems when installing packages in R
+
+1.  Package : RODBC
+  problem : Warning in install.packages :  installation of package ‘RODBC’ had non-zero exit status
+  Solving steps:  1. /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+                  2. brew update && brew install unixODBC
+                  
+                  
+2. Java / rJAVA
+  problem: //sudo R CMD javareconf// and  //R CMD javareconf// gave different results
+  Soving : install.packages('rJava', repos = 'http://rforge.net')
+
+  
