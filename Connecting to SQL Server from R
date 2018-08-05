@@ -45,6 +45,6 @@ write.csv(result, file = "test.csv",row.names=FALSE)
                   
 2. Java / rJAVA
   problem: //sudo R CMD javareconf// and  //R CMD javareconf// gave different results
-  Soving : install.packages('rJava', repos = 'http://rforge.net')
+  Solving : install.packages('rJava', repos = 'http://rforge.net')
 
   
